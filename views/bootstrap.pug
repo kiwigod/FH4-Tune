@@ -1,0 +1,3 @@
+mixin rOnlyInput(id, labelText, value)
+    label.control-label(for=id)= labelText
+    input.form-control(id=id, type="text", value=value, readonly)

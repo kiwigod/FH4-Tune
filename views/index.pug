@@ -1,0 +1,45 @@
+extends layout
+include bootstrap
+
+block content
+  script(src="javascripts/tuner.js")
+  .row
+    .col-sm
+      h1 Base Tune
+  .row
+    .col-sm
+      label.control-label(for="wd") Insert the car's weight distribution
+      input#wd.form-control(type="number", max=100, min=0, step=1, value=50)
+      button.btn.btn-primary.btn-lg.btn-block(type="button", onClick="calculate()") Generate base tune
+  .row
+    .col-sm
+      h2 Anti-roll bar
+  .row
+    .col-sm-6
+      +rOnlyInput("arb_f", "Front", "ARB value front...")
+    .col-sm-6
+      +rOnlyInput("arb_r", "Rear", "ARB value rear...")
+  .row
+    .col-sm
+      h2 Spring stiffness
+  .row
+    .col-sm-6
+      +rOnlyInput("spr_f", "Front", "Spring value front...")
+    .col-sm-6
+      +rOnlyInput("spr_r", "Rear", "Spring value rear...")
+  .row
+    .col-sm
+      h2 Rebound
+  .row
+    .col-sm-6
+      +rOnlyInput("rbd_f", "Front", "Rebound value front...")
+    .col-sm-6
+      +rOnlyInput("rbd_r", "Rear", "Rebound value rear...")
+  .row
+    .col-sm
+      h2 Bump
+  .row(style="margin-bottom:4em")
+    .col-sm-6
+      +rOnlyInput("bmp_f", "Front", "Bump value front...")
+    .col-sm-6
+      +rOnlyInput("bmp_r", "Rear", "Bump value rear...")
