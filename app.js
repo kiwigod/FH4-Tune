@@ -3,13 +3,13 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const isDevelopment = process.env.NODE_ENV === 'development';
+const isProduction = process.env.NODE_ENV !== 'development';
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-if (isDevelopment) {
+if (!isProduction) {
   app.use(require('morgan')('dev'));
 }
 app.use(express.static(path.join(__dirname, 'public')));
@@ -25,7 +25,7 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = isDevelopment ? err : {};
+  res.locals.error = err;
 
   // render the error page
   res.status(err.status || 500);
